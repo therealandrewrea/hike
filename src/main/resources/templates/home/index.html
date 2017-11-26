@@ -8,9 +8,19 @@
 
     <nav th:replace="fragment :: navigation"></nav>
 
-    <ul>
-    <li th:each="hike : ${hikes}" th:text="${hike}"></li>
-</ul>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Location</th>
+    </tr>
+    <tr th:each="hike : ${hikes}">
+        <td th:text="hike.name"></td>
+        <td th:text="hike.description"></td>
+        <td th:text="hike.location"></td>
+    </tr>
+
+</table>
 
 </body>
 </html>
