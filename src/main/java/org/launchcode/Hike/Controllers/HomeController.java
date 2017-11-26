@@ -32,6 +32,6 @@ public class HomeController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String ProcessAdd(@RequestParam String hikeName) {
         hikes.add(hikeName);
-        return "redirect:";
+        return"redirect:";
     }
 }
