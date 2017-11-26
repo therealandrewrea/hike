@@ -1,5 +1,6 @@
 package org.launchcode.Hike.Controllers;
 
+import org.launchcode.Hike.Models.hike;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 @RequestMapping("home")
 public class HomeController {
 
-    static ArrayList<String> hikes = new ArrayList<>();
+    static ArrayList<hike> hikes = new ArrayList<>();
 
     @RequestMapping(value="")
     public String index(Model model) {
@@ -30,8 +31,9 @@ public class HomeController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String ProcessAdd(@RequestParam String hikeName) {
-        hikes.add(hikeName);
+    public String ProcessAdd(@RequestParam String hikeName, @RequestParam String hikeDescription, @RequestParam String hikeLocation) {
+        hike newHike = new hike (hikeName,  hikeDescription, hikeLocation);
+        hikes.add(newHike);
         return"redirect:";
     }
 }
