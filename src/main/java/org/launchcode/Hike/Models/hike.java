@@ -6,14 +6,29 @@ public class hike {
     private String description;
     private String location;
     private int hikeId;
+    private static int nextId = 1;
+
 //  just including text added fields for now, location may ultimately be coordinates //
 //  tags may be included in this class/object as well, need to see what works best //
 
 
     public hike(String name, String description, String location) {
+        this();
         this.name = name;
         this.description = description;
         this.location = location;
+    }
+    public hike() {
+        hikeId = nextId;
+        nextId++;
+    }
+
+    public int getHikeId() {
+        return hikeId;
+    }
+
+    public void setHikeId(int hikeId) {
+        this.hikeId = hikeId;
     }
 
     public String getName() {
