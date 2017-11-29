@@ -3,11 +3,13 @@ package org.launchcode.Hike.Controllers;
 import org.launchcode.Hike.Models.hike;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Controller
@@ -21,6 +23,7 @@ public class HomeController {
 
         model.addAttribute("hikes", hikes);
         model.addAttribute("title", "Take A Hike!");
+        model.addAttribute(new hike());
         return "home/index";
     }
 
@@ -32,7 +35,12 @@ public class HomeController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String ProcessAdd(@ModelAttribute hike newHike) {
+    public String ProcessAdd(@ModelAttribute @Valid hike newHike, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Share A Hike");
+            return "home/add";
+        }
         hikes.add(newHike);
         return"redirect:";
     }

@@ -8,15 +8,15 @@
 
 <nav th:replace="fragment :: navigation"></nav>
 
-    <form method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" />
+    <form method="post" th:object="${hike}">
+        <label th:for="name">Name</label>
+        <input th:field="*{name}" />
 
-        <label for="description">Description</label>
-        <input type="text" id="description" name="description" />
+        <label th:for="description">Description</label>
+        <input th:field="*{description}" />
 
-        <label for="location">Location</label>
-        <input type="text" id="location" name="location" />
+        <label th:for="location">Location</label>
+        <input th:field="*{location}" />
 
         <input type="submit" value="Share this hike"/>
     </form>

@@ -1,9 +1,16 @@
 package org.launchcode.Hike.Models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class hike {
 
+    @NotNull
+    @Size(min=3, max=25)
     private String name;
+    @NotNull
     private String description;
+    @NotNull
     private String location;
     private int hikeId;
     private static int nextId = 1;
