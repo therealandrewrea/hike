@@ -9,6 +9,7 @@ public class hike {
     @Size(min=3, max=25)
     private String name;
     @NotNull
+    @Size(min=15)
     private String description;
     @NotNull
     private String location;
