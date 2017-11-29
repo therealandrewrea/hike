@@ -6,12 +6,13 @@ import javax.validation.constraints.Size;
 public class hike {
 
     @NotNull
-    @Size(min=3, max=25)
+    @Size(min=3, max=25, message="The hike name should be between 3 and 25 characters.")
     private String name;
     @NotNull
-    @Size(min=15)
+    @Size(min=15, message="Please provide a longer description - tell fellow hiker's what it's like!")
     private String description;
     @NotNull
+    @Size(min=1, message="Let us know what park or area the hike is in.")
     private String location;
     private int hikeId;
     private static int nextId = 1;
