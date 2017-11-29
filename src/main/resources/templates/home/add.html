@@ -11,12 +11,17 @@
     <form method="post" th:object="${hike}">
         <label th:for="name">Name</label>
         <input th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
 
         <label th:for="description">Description</label>
         <input th:field="*{description}" />
+        <span th:errors="*{description}" class="error"></span>
+
 
         <label th:for="location">Location</label>
         <input th:field="*{location}" />
+        <span th:errors="*{location}"  class="error"></span>
+
 
         <input type="submit" value="Share this hike"/>
     </form>
