@@ -13,11 +13,13 @@
         <th>Name</th>
         <th>Description</th>
         <th>Location</th>
+        <th>Tags</th>
     </tr>
     <tr th:each="hike : ${hikes}">
         <td th:text="${hike.name}"></td>
         <td th:text="${hike.description}"></td>
         <td th:text="${hike.location}"></td>
+        <td th:text="${hike.tags.name}"></td>
     </tr>
 
 </table>

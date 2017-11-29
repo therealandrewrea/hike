@@ -1,6 +1,7 @@
 package org.launchcode.Hike.Controllers;
 
 import org.launchcode.Hike.Models.hike;
+import org.launchcode.Hike.Models.hikeTag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -32,6 +33,7 @@ public class HomeController {
 
         model.addAttribute("title", "Share A Hike");
         model.addAttribute(new hike());
+        model.addAttribute("hikeTag", hikeTag.values());
         return "home/add";
     }
 
@@ -40,6 +42,8 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Share A Hike");
+            model.addAttribute(new hike());
+            model.addAttribute("hikeTag", hikeTag.values());
             return "home/add";
         }
         hikes.add(newHike);

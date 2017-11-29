@@ -9,20 +9,33 @@
 <nav th:replace="fragment :: navigation"></nav>
 
     <form method="post" th:object="${hike}">
+
         <div class="form-group">
             <label th:for="name">Name</label>
             <input th:field="*{name}" />
             <span th:errors="*{name}" class="error"></span>
         </div>
+
         <div class="form-group">
             <label th:for="description">Description</label>
             <input th:field="*{description}" />
             <span th:errors="*{description}" class="error"></span>
         </div>
+
         <div class="form-group">
             <label th:for="location">Location</label>
             <input th:field="*{location}" />
             <span th:errors="*{location}"  class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label th:for="tags">Tags</label>
+            <select th:field="*{tags}">
+                <option th:each="hikeTag : ${hikeTag}"
+                        th:text="${hikeTag.name}"
+                        th:value="${hikeTag}">
+                </option>
+            </select>
         </div>
 
         <input type="submit" value="Share this hike"/>

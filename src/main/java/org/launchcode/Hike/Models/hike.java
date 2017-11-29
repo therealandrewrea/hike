@@ -19,7 +19,15 @@ public class hike {
 
 //  just including text added fields for now, location may ultimately be coordinates //
 //  tags may be included in this class/object as well, need to see what works best //
+    private hikeTag tags;
 
+    public hikeTag getTags() {
+        return tags;
+    }
+
+    public void setTags(hikeTag tags) {
+        this.tags = tags;
+    }
 
     public hike(String name, String description, String location) {
         this();
