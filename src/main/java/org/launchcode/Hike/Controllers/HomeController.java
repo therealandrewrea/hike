@@ -31,6 +31,7 @@ public class HomeController {
     public String DisplayAdd(Model model) {
 
         model.addAttribute("title", "Share A Hike");
+        model.addAttribute(new hike());
         return "home/add";
     }
 
