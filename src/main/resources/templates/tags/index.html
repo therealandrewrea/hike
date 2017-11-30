@@ -4,7 +4,22 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
-<body>
-    <!-- display master list of tags and allow for addition of new tags without a hike (maybe) -->
+
+<!-- display master list of tags and allow for addition of new tags without a hike (maybe) -->
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<ul>
+    <li th:each = "hike : ${hikes}">
+        <a th:href = "'tags/' + ${hike.id}" th:text="${hike.name}"></a>
+    </li>
+</ul>
+
+<a href="/home/add">Share a Hike</a>
+
 </body>
 </html>

@@ -26,7 +26,7 @@ public class hike {
 
     @Id
     @GeneratedValue
-    private int id;
+    public int id;
 
     @ManyToMany
     private List<tags> tagsList;

@@ -4,7 +4,31 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
-<body>
     <!-- second stage of adding a hike to the DB, displays name, desc, location and lets user select tags or add -->
-</body>
+<body class="container">
+
+    <h1 th:text="${title}">Default Title</h1>
+
+    <nav th:replace="fragments :: navigation"></nav>
+
+    <form method = "post" th:object="${form}" action="/home/add-tags">
+
+        <div class = "form-group">
+            <label th:for="${tagId}">Tags</label>
+            <select name="tagId">
+                <option th:each = "tag : *{tags}"
+                        th:text = "${tag.name}"
+                        th:value = "${tag.id}"></option>
+            </select>
+            <span th:errors="*{tagId}" class="error"></span>
+            <span th:errors="*{hikeId}" class="error"></span>
+        </div>
+
+        <input type = "hidden" name="hikeId" th:value="${hikeId}" />
+
+        <input type = "submit" value="Add Tags" />
+
+    </form>
+
+</body>-->
 </html>
