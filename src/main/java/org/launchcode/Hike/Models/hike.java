@@ -1,8 +1,15 @@
 package org.launchcode.Hike.Models;
 
+import com.sun.javafx.beans.IDProperty;
+
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class hike {
 
     @NotNull
@@ -14,8 +21,10 @@ public class hike {
     @NotNull
     @Size(min=1, message="Let us know what park or area the hike is in.")
     private String location;
-    private int hikeId;
-    private static int nextId = 1;
+
+    @Id
+    @GeneratedValue
+    private int id;
 
 //  just including text added fields for now, location may ultimately be coordinates //
 //  tags may be included in this class/object as well, need to see what works best //
@@ -30,22 +39,14 @@ public class hike {
     }
 
     public hike(String name, String description, String location) {
-        this();
         this.name = name;
         this.description = description;
         this.location = location;
     }
-    public hike() {
-        hikeId = nextId;
-        nextId++;
-    }
+    public hike() {}
 
-    public int getHikeId() {
-        return hikeId;
-    }
-
-    public void setHikeId(int hikeId) {
-        this.hikeId = hikeId;
+    public int getId() {
+        return id;
     }
 
     public String getName() {

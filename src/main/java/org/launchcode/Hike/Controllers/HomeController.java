@@ -1,14 +1,15 @@
 package org.launchcode.Hike.Controllers;
 
+import org.launchcode.Hike.Models.data.HikeDao;
 import org.launchcode.Hike.Models.hike;
 import org.launchcode.Hike.Models.hikeTag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -17,12 +18,15 @@ import java.util.ArrayList;
 @RequestMapping("home")
 public class HomeController {
 
+    @Autowired
+    private HikeDao hikeDao;
+
     static ArrayList<hike> hikes = new ArrayList<>();
 
     @RequestMapping(value="")
     public String index(Model model) {
 
-        model.addAttribute("hikes", hikes);
+        model.addAttribute("hikes", hikeDao.findAll());
         model.addAttribute("title", "Take A Hike!");
         model.addAttribute(new hike());
         return "home/index";
@@ -46,7 +50,7 @@ public class HomeController {
             model.addAttribute("hikeTag", hikeTag.values());
             return "home/add";
         }
-        hikes.add(newHike);
+        hikeDao.save(newHike);
         return"redirect:";
     }
 }
