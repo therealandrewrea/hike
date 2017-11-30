@@ -6,8 +6,10 @@ import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class hike {
@@ -25,6 +27,9 @@ public class hike {
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToMany
+    private List<tags> tagsList;
 
 //  just including text added fields for now, location may ultimately be coordinates //
 //  tags may be included in this class/object as well, need to see what works best //
@@ -63,4 +68,12 @@ public class hike {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    // Tag management additions and methods //
+
+    public List<tags> getTagsList() {
+        return tagsList;
+    }
+
+    public void addTag (tags newTag) {tagsList.add(newTag);}
 }

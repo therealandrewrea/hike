@@ -3,8 +3,10 @@ package org.launchcode.Hike.Models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class tags {
@@ -16,6 +18,9 @@ public class tags {
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToMany (mappedBy = "tagsList")
+    private List<hike> hikeList;
 
     public tags () {} //default constructor//
 
