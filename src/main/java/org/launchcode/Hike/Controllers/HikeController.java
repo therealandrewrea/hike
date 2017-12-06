@@ -81,6 +81,6 @@ public class HikeController {
         newHike.addTag(newTag);
         hikeDao.save(newHike);
 
-        return "redirect:/home/view/" + newHike.getId();
+        return "redirect:/tags/add/" + newHike.getId();
     }
 }  // TODO - why is it saying these are static contexts?  Won't allow me to use predefined DAO methods for some reason //

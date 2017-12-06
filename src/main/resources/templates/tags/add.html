@@ -11,7 +11,7 @@
 
     <nav th:replace="fragments :: navigation"></nav>
 
-    <form method = "post" th:object="${form}" action="/home/add-tags">
+    <form method = "post" th:object="${form}" action="/tags/add">
 
         <div class = "form-group">
             <label th:for="${tagId}">Tags</label>
@@ -30,5 +30,5 @@
 
     </form>
 
-</body>-->
+</body>
 </html>
