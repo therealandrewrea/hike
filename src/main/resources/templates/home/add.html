@@ -28,6 +28,12 @@
             <span th:errors="*{location}"  class="error"></span>
         </div>
 
+        <div class="form-group"> <!-- TODO: checkboxes for preset tags and text box for custom tags, maybe http://loudev.com/ multiselect -->
+            <input type="checkbox" value="Private">Private</input>
+            <input type="checkbox" value="Crowded">Crowded</input>
+            <input type="checkbox" value="Views">Great Views</input>
+        </div>
+
         <input type="submit" value="Share this hike"/>
     </form>
 </body>

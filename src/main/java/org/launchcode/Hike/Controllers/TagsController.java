@@ -24,22 +24,22 @@ public class TagsController {
     // index //
 
     // add - GET - return 'tags/' + ${hike.id}//
-    @RequestMapping(value = "${hike.id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{hike.id}", method = RequestMethod.GET)
     public String DisplayAddTags(Model model) {
 
         model.addAttribute("title", "Tag your Hike");
         model.addAttribute(new tags());
-        return "tags/${hike.id}";
+        return "tags/{hike.id}";
     }
 
     // add - POST - //
-    @RequestMapping(value = "${hike.id}", method = RequestMethod.POST)
+    @RequestMapping(value = "{hike.id}", method = RequestMethod.POST)
     public String ProcessAddTags(@ModelAttribute @Valid tags newTag, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Share A Hike");
             model.addAttribute(new tags());
-            return "tags/${hike.id}";
+            return "tags/{hike.id}";
         }
         tagsDao.save(newTag);
         return "redirect:tags/" + newTag.getId();

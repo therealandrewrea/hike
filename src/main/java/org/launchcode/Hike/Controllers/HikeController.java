@@ -54,10 +54,10 @@ public class HikeController {
             return "home/add";
         }
         hikeDao.save(newHike);
-        return "redirect:tags/"+newHike.getId();
+        return "redirect:";
     }
 
-    @RequestMapping(value = "view/{hikeId}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "view/{hikeId}", method = RequestMethod.GET)
     public String viewHike(Model model, @PathVariable int hikeId) {
         hike hike = hikeDao.findOne(hikeId);
 
@@ -82,5 +82,5 @@ public class HikeController {
         hikeDao.save(newHike);
 
         return "redirect:/tags/add/" + newHike.getId();
-    }
-}  // TODO - why is it saying these are static contexts?  Won't allow me to use predefined DAO methods for some reason //
+    }*/
+}
