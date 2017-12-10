@@ -74,7 +74,7 @@ public class HikeController {
         return "home/view";
     }
 
-    @RequestMapping(value = "/add-tags/{hikeId}", method = RequestMethod.GET)
+    @RequestMapping(value = "add-tags/{hikeId}", method = RequestMethod.GET)
     public String addTags (Model model, @PathVariable int hikeId) {
 
         hike newHike = hikeDao.findOne(hikeId);

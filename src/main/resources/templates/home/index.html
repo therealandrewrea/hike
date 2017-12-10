@@ -8,21 +8,20 @@
 
     <nav th:replace="fragment :: navigation"></nav>
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Tags</th>
-    </tr>
-    <tr th:each="hike : ${hikes}">
-        <td><a th:href="'home/view/'+${hike.id}" th:text="${hike.name}"></a></td>
-        <td th:text="${hike.description}"></td>
-        <td th:text="${hike.location}"></td>
-        <td>Tags!</td>  <!-- TODO need to update (.name) for many to many, this is a filler -->
-    </tr>
-
-</table>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Tags</th>
+        </tr>
+        <tr th:each="hike : ${hikes}">
+            <td><a th:href="'home/view/'+${hike.id}" th:text="${hike.name}"></a></td>
+            <td th:text="${hike.description}"></td>
+            <td th:text="${hike.location}"></td>
+            <td>Tags!</td>  <!-- TODO need to update (.name) for many to many, this is a filler -->
+        </tr>
+    </table>
 
 </body>
 </html>
