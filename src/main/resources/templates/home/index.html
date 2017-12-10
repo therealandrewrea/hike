@@ -16,7 +16,7 @@
         <th>Tags</th>
     </tr>
     <tr th:each="hike : ${hikes}">
-        <td th:text="${hike.name}"></td>
+        <td><a th:href="'home/view/'+${hike.id}" th:text="${hike.name}"></a></td>
         <td th:text="${hike.description}"></td>
         <td th:text="${hike.location}"></td>
         <td>Tags!</td>  <!-- TODO need to update (.name) for many to many, this is a filler -->

@@ -28,6 +28,10 @@
             <span th:errors="*{location}"  class="error"></span>
         </div>
 
+        <div class="form-group">
+            <label th:for="tags">Tags</label>
+        </div>
+
         <div class="form-group"> <!-- TODO: checkboxes for preset tags and text box for custom tags, maybe http://loudev.com/ multiselect -->
             <input type="checkbox" value="Private">Private</input>
             <input type="checkbox" value="Crowded">Crowded</input>

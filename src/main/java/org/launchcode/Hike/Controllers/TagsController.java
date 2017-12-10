@@ -45,3 +45,5 @@ public class TagsController {
         return "redirect:tags/" + newTag.getId();
     }
 }
+
+// TODO may not need if I can fully build out the hike creation into a single page on the hike controller //
