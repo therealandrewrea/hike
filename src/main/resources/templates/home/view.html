@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<nav th:replace="fragment :: navigation"></nav>
+
+<ul>
+    <li th:each="tag: ${tags}" th:text="${tags.name}"></li>
+</ul>
+
+<p th:unless=${cheeses.size()}">No Tags Added Yet</p>
+
+<p> <a th:href="'tags/add/' + ${hikeId}">Add Tags</a></p>
+</body>
+</html>
