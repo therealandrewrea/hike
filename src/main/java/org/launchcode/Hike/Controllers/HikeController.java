@@ -71,13 +71,21 @@ public class HikeController {
         model.addAttribute("description", newHike.getDescription());
         model.addAttribute("location",newHike.getLocation());
 
-        // AddTagForm form = new AddTagForm(tagsDao.findAll(), hike); //
-        // model.addAttribute("form", form); //
-
         return "home/view";
     }
 
-    @RequestMapping(value = "add-tags", method = RequestMethod.GET)
+    @RequestMapping(value = "/add-tags/{hikeId}", method = RequestMethod.GET)
+    public String addTags (Model model, @PathVariable int hikeId) {
+
+        hike newHike = hikeDao.findOne(hikeId);
+        AddTagForm form = new AddTagForm(tagsDao.findAll(), newHike);
+        model.addAttribute("title", "Add a Tag to this Hike");
+        model.addAttribute("form", form);
+
+        return "home/add-tags/";
+    }
+
+    @RequestMapping(value = "add-tags/{hikeId}", method = RequestMethod.POST)
     public String addTags (Model model, @ModelAttribute @Valid AddTagForm form, Errors errors) {
 
         if (errors.hasErrors()) {
@@ -89,6 +97,6 @@ public class HikeController {
         newHike.addTag(newTag);
         hikeDao.save(newHike);
 
-        return "redirect:/tags/add/" + newHike.getId();
+        return "home/add-tags/" + newHike.getId();
     }
 }
