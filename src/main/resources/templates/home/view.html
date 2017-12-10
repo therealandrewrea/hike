@@ -6,13 +6,21 @@
 </head>
 <body>
 
+<h1 th:text="${title}">Default Title</h1>
+
 <nav th:replace="fragment :: navigation"></nav>
 
-<ul>
-    <li th:each="tag: ${tags}" th:text="${tags.name}"></li>
-</ul>
+    <tr th:object="${newHike}">
+        <p>Name:</p>
+        <p th:text="${name}"></p>
+        <p>Description:</p>
+        <p th:text="${description}"></p>
+        <p>Location:</p>
+        <p th:text="${location}"></p>
+        <p>Tags!</p>  <!-- TODO need to update (.name) for many to many, this is a filler -->
+    </tr>
 
-<p th:unless=${tags.size()}">No Tags Added Yet</p>
+    <li th:each="tag: ${tags}" th:text="${tags.name}"></li>
 
 <p> <a th:href="'tags/add/' + ${hikeId}">Add Tags</a></p>
 </body>

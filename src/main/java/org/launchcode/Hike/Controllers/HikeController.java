@@ -55,7 +55,7 @@ public class HikeController {
         }
         hikeDao.save(newHike);
         int newHikeId = newHike.getId();
-        return "redirect:view/" + newHikeId; //still giving that static context message //
+        return "redirect:view/" + newHikeId;
     }
 
     // TODO - view method for each hike - have a homepage link based on /view/{hikeid} for each hike in DB - search result //
@@ -63,12 +63,18 @@ public class HikeController {
     @RequestMapping(value = "view/{hikeId}", method = RequestMethod.GET)
     public String viewHike(Model model, @PathVariable int hikeId) {
 
-        hike hike = hikeDao.findOne(hikeId);
-        AddTagForm form = new AddTagForm(tagsDao.findAll(), hike); // not sure why it says this is static //
+        hike newHike = hikeDao.findOne(hikeId);
         model.addAttribute("title", "Add a Tag to this Hike");
-        model.addAttribute("form", form);
+        model.addAttribute("tags", newHike.getTagsList());
+        model.addAttribute("hikeId", newHike.getId());
+        model.addAttribute("name", newHike.getName());
+        model.addAttribute("description", newHike.getDescription());
+        model.addAttribute("location",newHike.getLocation());
 
-        return "home/add-tags"; //does this need to be tags/add? //
+        // AddTagForm form = new AddTagForm(tagsDao.findAll(), hike); //
+        // model.addAttribute("form", form); //
+
+        return "home/view";
     }
 
     @RequestMapping(value = "add-tags", method = RequestMethod.GET)
