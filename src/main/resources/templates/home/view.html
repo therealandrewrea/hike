@@ -12,7 +12,7 @@
     <li th:each="tag: ${tags}" th:text="${tags.name}"></li>
 </ul>
 
-<p th:unless=${cheeses.size()}">No Tags Added Yet</p>
+<p th:unless=${tags.size()}">No Tags Added Yet</p>
 
 <p> <a th:href="'tags/add/' + ${hikeId}">Add Tags</a></p>
 </body>
