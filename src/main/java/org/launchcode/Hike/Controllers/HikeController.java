@@ -99,4 +99,9 @@ public class HikeController {
 
         return "home/add-tags.html/" + newHike.getId();
     }
+
+    @RequestMapping(value="search", method = RequestMethod.GET)
+    public String Search (Model model) {
+        return "home/search";
+    }
 }
