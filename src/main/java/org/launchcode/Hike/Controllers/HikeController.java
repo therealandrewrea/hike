@@ -101,7 +101,12 @@ public class HikeController {
     }
 
     @RequestMapping(value="search", method = RequestMethod.GET)
-    public String Search (Model model) {
+    public String search (Model model) {
         return "home/search";
     }
+
+    @RequestMapping(value = "search", method = RequestMethod.POST)
+    public String searchpost (Model model) {
+        return "home/search";
+    } //TODO refactor post request to take data from the search field and put it in as a search //
 }
