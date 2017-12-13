@@ -74,7 +74,9 @@ public class HikeController {
         return "home/view";
     }
 
-    @RequestMapping(value = "add-tags.html/{hikeId}", method = RequestMethod.GET)
+    //TODO do I need a post request to navigate away to the add tags page?//
+
+    @RequestMapping(value = "add-tags/{hikeId}", method = RequestMethod.GET)
     public String addTags (Model model, @PathVariable int hikeId) {
 
         hike newHike = hikeDao.findOne(hikeId);
@@ -82,26 +84,27 @@ public class HikeController {
         model.addAttribute("title", "Add a Tag to this Hike");
         model.addAttribute("form", form);
 
-        return "home/add-tags.html/";
+        return "home/add-tags/";
     }
 
-    @RequestMapping(value = "add-tags.html/{hikeId}", method = RequestMethod.POST)
+    @RequestMapping(value = "add-tags/{hikeId}", method = RequestMethod.POST)
     public String addTags (Model model, @ModelAttribute @Valid AddTagForm form, Errors errors) {
 
         if (errors.hasErrors()) {
             model.addAttribute("form", form);
-            return "home/add-tags.html/";
+            return "home/add-tags/";
         }
         tags newTag = tagsDao.findOne(form.getTagsId());
         hike newHike = hikeDao.findOne(form.getHikeId());
         newHike.addTag(newTag);
         hikeDao.save(newHike);
 
-        return "home/add-tags.html/" + newHike.getId();
+        return "home/add-tags/" + newHike.getId();
     }
 
     @RequestMapping(value="search", method = RequestMethod.GET)
     public String search (Model model) {
+        model.addAttribute("title", "Find A Hike!");
         return "home/search";
     }
 
